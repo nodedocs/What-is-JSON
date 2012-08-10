@@ -120,10 +120,10 @@ other languages have methods of transferring native hashes and lists
 into JSON-encoded strings. Here's a quick example in Ruby.
 
 ```ruby
-    require 'json'
+require 'json'
 
-    data = { :one => 1 }
-    puts data.to_json
+data = { :one => 1 }
+puts data.to_json
 
-    # prints "{ \"one\": 1 }"
+# prints "{ \"one\": 1 }"
 ```
