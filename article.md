@@ -5,11 +5,13 @@ has become the defacto standard for the web. JSON can be represented
 as either a list of values, e.g. an Array, or a hash of properties and
 values, e.g. an Object.
 
-    // a JSON array
-    ["one", "two", "three"]
+```javascript
+// a JSON array
+["one", "two", "three"]
 
-    // a JSON object
-    { "one": 1, "two": 2, "three": 3 }
+// a JSON object
+{ "one": 1, "two": 2, "three": 3 }
+```
 
 ## Encoding and Decoding
 
@@ -20,28 +22,32 @@ available on the `JSON` object that is available in the global scope.
 `JSON.stringify` takes a javascript object or array and returns a
 serialized string in the JSON format.
 
-    var data = {
-      name: "John Doe"
-      , age: 32
-      , title: "Vice President of JavaScript"
-    }
+```javascript
+var data = {
+  name: "John Doe"
+  , age: 32
+  , title: "Vice President of JavaScript"
+}
 
-    var jsonStr = JSON.stringify(data);
+var jsonStr = JSON.stringify(data);
 
-    console.log(jsonStr);
+console.log(jsonStr);
 
-    // prints '{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}'
+// prints '{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}'
+```
 
 `JSON.parse` takes a JSON-encoded string and decodes it to a javascript data
 structure.
 
-    var jsonStr = '{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}';
+```javascript
+var jsonStr = '{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}';
 
-    var data = JSON.parse(jsonStr);
+var data = JSON.parse(jsonStr);
 
-    console.log(data.title);
+console.log(data.title);
 
-    // prints 'Vice President of JavaScript'
+// prints 'Vice President of JavaScript'
+```
 
 ## What is valid JSON?
 
@@ -58,38 +64,42 @@ format. There are several gotchas that can produce invalid JSON as well.
 
 These are all examples of valid JSON.
 
-    {"name":"John Doe","age":32,"title":"Vice President of JavaScript"}
+```javascript
+{"name":"John Doe","age":32,"title":"Vice President of JavaScript"}
 
-    ["one", "two", "three"]
+["one", "two", "three"]
 
-    // nesting valid values is okay
-    {"names": ["John Doe", "Jane Doe"] }
-     
-    [ { "name": "John Doe"}, {"name": "Jane Doe"} ]
+// nesting valid values is okay
+{"names": ["John Doe", "Jane Doe"] }
+ 
+[ { "name": "John Doe"}, {"name": "Jane Doe"} ]
 
-    {} // empty hash
+{} // empty hash
 
-    [] // empty list
+[] // empty list
 
-    null
+null
 
-    { "key": "\uFDD0" } // unicode escape codes
+{ "key": "\uFDD0" } // unicode escape codes
+```
 
 These are all examples of bad JSON formatting.
 
-    { name: "John Doe", 'age': 32 } // name and age should be in double quotes
+```javascript
+{ name: "John Doe", 'age': 32 } // name and age should be in double quotes
 
-    [32, 64, 128, 0xFFF] // hex numbers are not allowed
+[32, 64, 128, 0xFFF] // hex numbers are not allowed
 
-    { "name": "John Doe", age: undefined } // undefined is an invalid value
+{ "name": "John Doe", age: undefined } // undefined is an invalid value
 
-    // functions and dates are not allowed
-    { "name": "John Doe"
-      , "birthday": new Date('Fri, 26 Aug 2011 07:13:10 GMT')
-      , "getName": function() {
-          return this.name;
-      }
-    }
+// functions and dates are not allowed
+{ "name": "John Doe"
+  , "birthday": new Date('Fri, 26 Aug 2011 07:13:10 GMT')
+  , "getName": function() {
+      return this.name;
+  }
+}
+```
 
 Calling `JSON.parse` with an invalid JSON string will result in a
 SyntaxError being thrown. If you are not sure of the validity of your
@@ -109,9 +119,11 @@ structures, it's use is not limited to the JavaScript language. Many
 other languages have methods of transferring native hashes and lists
 into JSON-encoded strings. Here's a quick example in Ruby.
 
+```ruby
     require 'json'
 
     data = { :one => 1 }
     puts data.to_json
 
     # prints "{ \"one\": 1 }"
+```
